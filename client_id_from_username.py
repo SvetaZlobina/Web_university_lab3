@@ -1,5 +1,7 @@
 from base_client import BaseClient
 import requests
+from exception import HandlerException
+
 
 
 class ClientIdFromUsername(BaseClient):
@@ -30,6 +32,6 @@ class ClientIdFromUsername(BaseClient):
 
     def response_handler(self, response):
         if response.status_code != 200:
-            print('Error!') # todo raise an exception
+            raise HandlerException('response in ClientIdFromUsername with not 200 status')
         else:
             self.real_id = response.json()['response'][0]['uid']

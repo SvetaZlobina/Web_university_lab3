@@ -1,6 +1,7 @@
 from base_client import BaseClient
 import requests
 from datetime import datetime
+from exception import HandlerException
 
 
 class ClientFriends(BaseClient):
@@ -48,7 +49,7 @@ class ClientFriends(BaseClient):
 
     def response_handler(self, response):
         if response.status_code != 200:
-            print('Error!') # todo raise an exception
+            raise HandlerException('response in ClientFriends with not 200 status')
         else:
             response_dict = response.json()
             self.ages_list = []
@@ -62,5 +63,4 @@ class ClientFriends(BaseClient):
                 except KeyError:
                     continue
                 except Exception:
-                    print(Exception)
-                    continue
+                    raise HandlerException('unknown exception while processing bdates')

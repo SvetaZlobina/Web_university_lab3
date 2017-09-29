@@ -5,6 +5,7 @@ from client_id_from_username import ClientIdFromUsername
 client_by_username = ClientIdFromUsername('pakahontas')
 client_by_username.execute()
 print(client_by_username.real_id)
+
 client = ClientFriends(client_by_username.real_id)
 client.execute()
 print(client.ages_list)
