@@ -1,11 +1,14 @@
 class BaseClient:
 
     # URL vk api
-    BASE_URL = 'https://api.vk.com/method/'
+    BASE_URL = None
     # метод vk api
     method = None
     # GET, POST, ...
     http_method = None
+
+    def __init__(self, base_url):
+        self.BASE_URL = base_url
 
     # Получение GET параметров запроса
     def get_params(self):

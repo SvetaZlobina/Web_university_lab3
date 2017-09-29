@@ -5,8 +5,8 @@ from exception import HandlerException
 
 
 class ClientFriends(BaseClient):
+    BASE_URL = 'https://api.vk.com/method/'
     method = 'friends.get'
-
     http_method = 'GET'
 
     def __init__(self,
@@ -17,6 +17,7 @@ class ClientFriends(BaseClient):
                  offset=None,
                  fields='bdate',
                  name_case=None):
+        super().__init__(self.BASE_URL)
         self.user_id = user_id
         self.order = order
         self.list_id = list_id

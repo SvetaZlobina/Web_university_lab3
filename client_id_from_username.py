@@ -3,13 +3,13 @@ import requests
 from exception import HandlerException
 
 
-
 class ClientIdFromUsername(BaseClient):
+    BASE_URL = 'https://api.vk.com/method/'
     method = 'users.get'
-
     http_method = 'GET'
 
     def __init__(self, user_id, fields=None, name_case=None):
+        super().__init__(self.BASE_URL)
         self.user_id = user_id
         self.fields = fields
         self.name_case = name_case
